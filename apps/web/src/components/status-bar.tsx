@@ -3,10 +3,12 @@
 import { useState, useEffect } from "react"
 
 export function StatusBar() {
+  const [mounted, setMounted] = useState(false)
   const [uptime, setUptime] = useState(0)
-  const [latency, setLatency] = useState(0)
+  const [latency, setLatency] = useState(12)
 
   useEffect(() => {
+    setMounted(true)
     const interval = setInterval(() => {
       setUptime((prev) => prev + 1)
       setLatency(Math.floor(Math.random() * 20) + 5)
