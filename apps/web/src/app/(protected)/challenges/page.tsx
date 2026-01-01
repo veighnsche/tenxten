@@ -20,7 +20,7 @@ export default async function ChallengesPage({
   const domains = [...new Set(challenges?.map(c => c.domain) || [])]
 
   const difficultyColor: Record<string, string> = {
-    easy: "text-green-500 border-green-500",
+    easy: "text-signal-orange border-signal-orange",
     medium: "text-amber-500 border-amber-500",
     hard: "text-red-500 border-red-500",
     extreme: "text-purple-500 border-purple-500",
@@ -31,7 +31,7 @@ export default async function ChallengesPage({
       <div className="mx-auto max-w-6xl space-y-8">
         {/* Header */}
         <header className="space-y-4">
-          <Link href="/dashboard" className="text-neutral-500 text-xs hover:text-green-500">
+          <Link href="/dashboard" className="text-neutral-500 text-xs hover:text-signal-orange">
             ← BACK TO DASHBOARD
           </Link>
           <div>
@@ -40,7 +40,7 @@ export default async function ChallengesPage({
             </p>
             <h1 className="mt-1 text-2xl font-bold">
               {track === "native" ? (
-                <span className="text-green-500">10x.NATIVE</span>
+                <span className="text-signal-orange">10x.NATIVE</span>
               ) : (
                 <span className="text-amber-500">10x.AUGMENTED</span>
               )}
@@ -54,7 +54,7 @@ export default async function ChallengesPage({
             href="/challenges?track=native"
             className={`border px-4 py-2 text-xs uppercase tracking-wider transition-colors ${
               track === "native"
-                ? "border-green-500 bg-green-500/10 text-green-500"
+                ? "border-signal-orange bg-signal-orange/10 text-signal-orange"
                 : "border-neutral-800 text-neutral-500 hover:border-neutral-600"
             }`}
           >
@@ -73,10 +73,10 @@ export default async function ChallengesPage({
         </div>
 
         {/* Track Info */}
-        <div className={`border p-4 ${track === "native" ? "border-green-500/30 bg-green-500/5" : "border-amber-500/30 bg-amber-500/5"}`}>
+        <div className={`border p-4 ${track === "native" ? "border-signal-orange/30 bg-signal-orange/5" : "border-amber-500/30 bg-amber-500/5"}`}>
           {track === "native" ? (
             <p className="text-sm text-neutral-300">
-              <span className="text-green-500 font-bold">NATIVE</span> challenges test your raw programming ability. 
+              <span className="text-signal-orange font-bold">NATIVE</span> challenges test your raw programming ability. 
               No AI tools, no external resources. Just you and the code.
             </p>
           ) : (
@@ -106,7 +106,7 @@ export default async function ChallengesPage({
                       >
                         <div className="flex items-start justify-between">
                           <div className="space-y-1">
-                            <h3 className="font-bold group-hover:text-green-500">
+                            <h3 className="font-bold group-hover:text-signal-orange">
                               {challenge.title}
                             </h3>
                             <p className="text-xs text-neutral-500">

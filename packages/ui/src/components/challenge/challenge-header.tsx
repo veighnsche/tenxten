@@ -44,7 +44,7 @@ const trackBadgeVariants = cva(
   {
     variants: {
       track: {
-        native: "border-green-500 bg-green-500/10 text-green-500",
+        native: "border-signal-orange bg-signal-orange/10 text-signal-orange",
         augmented: "border-amber-500 bg-amber-500/10 text-amber-500",
       },
     },
@@ -66,7 +66,7 @@ function TrackBadge({ track, className }: TrackBadgeProps) {
     >
       {track === "native" ? (
         <>
-          <span className="size-1.5 animate-pulse rounded-full bg-green-500" />
+          <span className="size-1.5 animate-pulse rounded-full bg-signal-orange" />
           10x.NATIVE
         </>
       ) : (
@@ -116,7 +116,7 @@ function ChallengeTimer({ timeRemaining, totalTime, className }: ChallengeTimerP
         <div
           className={cn(
             "w-full transition-all duration-1000",
-            isCritical ? "bg-red-500" : isWarning ? "bg-amber-500" : "bg-green-500"
+            isCritical ? "bg-red-500" : isWarning ? "bg-amber-500" : "bg-signal-orange"
           )}
           style={{ height: `${percentage}%` }}
         />
@@ -133,9 +133,9 @@ interface ChallengeStatusProps {
 function ChallengeStatus({ status, className }: ChallengeStatusProps) {
   const statusConfig = {
     ready: { label: "READY", color: "text-muted-foreground" },
-    running: { label: "PROVING", color: "text-green-500" },
+    running: { label: "PROVING", color: "text-signal-orange" },
     submitting: { label: "VERIFYING", color: "text-amber-500" },
-    completed: { label: "PASSED", color: "text-green-500" },
+    completed: { label: "PASSED", color: "text-signal-orange" },
     failed: { label: "FAILED", color: "text-red-500" },
   }
 
@@ -149,7 +149,7 @@ function ChallengeStatus({ status, className }: ChallengeStatusProps) {
       <span className="text-muted-foreground uppercase tracking-wider">Status:</span>
       <span className={cn("font-bold uppercase", config.color)}>
         {status === "running" && (
-          <span className="mr-1.5 inline-block size-1.5 animate-pulse rounded-full bg-green-500" />
+          <span className="mr-1.5 inline-block size-1.5 animate-pulse rounded-full bg-signal-orange" />
         )}
         {config.label}
       </span>

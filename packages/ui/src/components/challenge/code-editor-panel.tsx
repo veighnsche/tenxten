@@ -70,7 +70,7 @@ function CodeEditorPanel({
           <span>Chars: {code.length}</span>
         </div>
         <div className="text-muted-foreground flex items-center gap-2">
-          <span className="size-1.5 rounded-full bg-green-500" />
+          <span className="size-1.5 rounded-full bg-signal-orange" />
           <span>UTF-8</span>
         </div>
       </div>
@@ -162,7 +162,7 @@ function CodeEditorActions({
           onClick={onSubmit}
           disabled={isRunning || isSubmitting}
           className={cn(
-            "flex h-8 items-center gap-2 border border-green-500 bg-green-500/10 px-4 text-xs font-bold uppercase tracking-wider text-green-500 transition-colors hover:bg-green-500/20",
+            "flex h-8 items-center gap-2 border border-signal-orange bg-signal-orange/10 px-4 text-xs font-bold uppercase tracking-wider text-signal-orange transition-colors hover:bg-signal-orange/20",
             "disabled:pointer-events-none disabled:opacity-50"
           )}
         >

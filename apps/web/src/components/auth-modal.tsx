@@ -34,7 +34,7 @@ export function AuthModal({ mode, onClose, onSuccess }: AuthModalProps) {
 
   return (
     <div className="fixed inset-0 bg-void/95 backdrop-blur-sm z-50 flex items-center justify-center p-6">
-      <div className="w-full max-w-md border border-terminal-green/50 bg-card">
+      <div className="w-full max-w-md border border-signal-orange/50 bg-card">
         <div className="border-b border-border bg-secondary/30 px-6 py-3">
           <div className="text-xs uppercase tracking-widest text-muted-foreground">// AUTHENTICATION REQUIRED</div>
           <div className="text-lg uppercase tracking-wide text-foreground mt-1">
@@ -55,7 +55,7 @@ export function AuthModal({ mode, onClose, onSuccess }: AuthModalProps) {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full bg-void border border-border px-4 py-3 text-foreground text-sm focus:border-terminal-green outline-none transition-colors"
+              className="w-full bg-void border border-border px-4 py-3 text-foreground text-sm focus:border-signal-orange outline-none transition-colors"
               placeholder="architect@tenxten.dev"
               disabled={isLoading}
             />
@@ -67,7 +67,7 @@ export function AuthModal({ mode, onClose, onSuccess }: AuthModalProps) {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full bg-void border border-border px-4 py-3 text-foreground text-sm focus:border-terminal-green outline-none transition-colors"
+              className="w-full bg-void border border-border px-4 py-3 text-foreground text-sm focus:border-signal-orange outline-none transition-colors"
               placeholder="••••••••••••"
               disabled={isLoading}
             />
@@ -77,7 +77,7 @@ export function AuthModal({ mode, onClose, onSuccess }: AuthModalProps) {
             <button
               type="submit"
               disabled={isLoading}
-              className="flex-1 bg-terminal-green text-void px-6 py-3 text-xs uppercase tracking-widest font-bold hover:bg-terminal-green/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="flex-1 bg-signal-orange text-void px-6 py-3 text-xs uppercase tracking-widest font-bold hover:bg-signal-orange/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               {isLoading ? "AUTHENTICATING..." : "EXECUTE"}
             </button>

@@ -43,16 +43,16 @@ export default function ForgotPasswordPage() {
     return (
       <div className="flex min-h-screen items-center justify-center bg-black p-4 font-mono">
         <div className="w-full max-w-md space-y-6 text-center">
-          <div className="border border-green-500/30 bg-green-500/5 p-8 space-y-4">
+          <div className="border border-signal-orange/30 bg-signal-orange/5 p-8 space-y-4">
             <div className="text-5xl">🔑</div>
-            <h1 className="text-xl font-bold text-green-500 uppercase tracking-wider">
+            <h1 className="text-xl font-bold text-signal-orange uppercase tracking-wider">
               Reset Link Sent
             </h1>
             <p className="text-neutral-400 text-sm">
               If an account exists with this email, you will receive a password reset link.
             </p>
             <div className="bg-black border border-neutral-800 p-4 text-left">
-              <pre className="text-green-500 text-xs leading-relaxed">
+              <pre className="text-signal-orange text-xs leading-relaxed">
 {`> PASSWORD RESET INITIATED
 > TARGET: ${email}
 >
@@ -67,7 +67,7 @@ export default function ForgotPasswordPage() {
             </p>
             <Link
               href="/login"
-              className="inline-block text-xs text-green-500 hover:underline"
+              className="inline-block text-xs text-signal-orange hover:underline"
             >
               ← RETURN TO LOGIN
             </Link>
@@ -82,7 +82,7 @@ export default function ForgotPasswordPage() {
       <div className="w-full max-w-md space-y-6">
         {/* Header */}
         <div className="space-y-2 text-center">
-          <h1 className="text-xl font-bold text-green-500 uppercase tracking-wider">
+          <h1 className="text-xl font-bold text-signal-orange uppercase tracking-wider">
             Reset Password
           </h1>
           <p className="text-neutral-500 text-xs uppercase tracking-widest">
@@ -113,7 +113,7 @@ export default function ForgotPasswordPage() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full border border-neutral-800 bg-black px-3 py-2.5 text-sm text-white outline-none transition-colors focus:border-green-500 placeholder:text-neutral-600"
+              className="w-full border border-neutral-800 bg-black px-3 py-2.5 text-sm text-white outline-none transition-colors focus:border-signal-orange placeholder:text-neutral-600"
               placeholder="operator@tenxten.dev"
               autoComplete="email"
               autoFocus
@@ -124,11 +124,11 @@ export default function ForgotPasswordPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full border border-green-500 bg-green-500/10 py-2.5 text-sm font-bold uppercase tracking-wider text-green-500 transition-colors hover:bg-green-500/20 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="w-full border border-signal-orange bg-signal-orange/10 py-2.5 text-sm font-bold uppercase tracking-wider text-signal-orange transition-colors hover:bg-signal-orange/20 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {loading ? (
               <>
-                <span className="inline-block size-3 border border-green-500 border-t-transparent animate-spin" />
+                <span className="inline-block size-3 border border-signal-orange border-t-transparent animate-spin" />
                 SENDING...
               </>
             ) : (
@@ -140,7 +140,7 @@ export default function ForgotPasswordPage() {
         {/* Back to login */}
         <p className="text-center text-xs text-neutral-500">
           Remember your password?{" "}
-          <Link href="/login" className="text-green-500 hover:underline">
+          <Link href="/login" className="text-signal-orange hover:underline">
             AUTHENTICATE
           </Link>
         </p>

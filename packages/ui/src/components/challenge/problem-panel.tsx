@@ -20,7 +20,7 @@ interface ProblemPanelProps {
 }
 
 const difficultyConfig = {
-  easy: { label: "EASY", color: "text-green-500 border-green-500" },
+  easy: { label: "EASY", color: "text-signal-orange border-signal-orange" },
   medium: { label: "MEDIUM", color: "text-amber-500 border-amber-500" },
   hard: { label: "HARD", color: "text-red-500 border-red-500" },
   extreme: { label: "EXTREME", color: "text-purple-500 border-purple-500" },
@@ -85,7 +85,7 @@ function ProblemPanel({
                 <ul className="text-muted-foreground space-y-1 text-sm">
                   {constraints.map((constraint, i) => (
                     <li key={i} className="flex items-start gap-2">
-                      <span className="text-green-500">›</span>
+                      <span className="text-signal-orange">›</span>
                       <code className="bg-muted px-1 py-0.5 text-xs">
                         {constraint}
                       </code>

@@ -12,7 +12,7 @@ function BlinkingCursor() {
     return () => clearInterval(interval)
   }, [])
 
-  return <span className={`${visible ? "opacity-100" : "opacity-0"} text-terminal-green`}>_</span>
+  return <span className={`${visible ? "opacity-100" : "opacity-0"} text-signal-orange`}>_</span>
 }
 
 function SystemCheck({
@@ -33,7 +33,7 @@ function SystemCheck({
 
   const statusColor = {
     LOADING: "text-muted-foreground",
-    OK: "text-terminal-green",
+    OK: "text-signal-orange",
     PENDING: "text-terminal-amber",
     FAILED: "text-terminal-red",
   }
@@ -91,7 +91,7 @@ export function CLIInterface({ onCommand }: CLIInterfaceProps) {
       <header className="mb-12">
         <div className="text-xs text-muted-foreground uppercase tracking-[0.3em] mb-2">SYSTEM BOOT v1.0.0</div>
         <h1 className="text-5xl sm:text-6xl font-bold tracking-tight text-foreground uppercase">TENXTEN</h1>
-        <div className="text-terminal-green text-xs uppercase tracking-widest mt-2">THE PROVING GROUND</div>
+        <div className="text-signal-orange text-xs uppercase tracking-widest mt-2">THE PROVING GROUND</div>
       </header>
 
       <div className="border border-border p-6 mb-8 bg-card">
@@ -112,7 +112,7 @@ export function CLIInterface({ onCommand }: CLIInterfaceProps) {
         <p className="text-sm leading-relaxed text-smoke">
           <span className="text-terminal-amber">&gt;</span> This platform exists to separate the{" "}
           <span className="text-terminal-red">Prompt Kiddies</span> from the{" "}
-          <span className="text-terminal-green">10x10 Architects</span>.
+          <span className="text-signal-orange">10x10 Architects</span>.
         </p>
       </div>
 
@@ -120,7 +120,7 @@ export function CLIInterface({ onCommand }: CLIInterfaceProps) {
         <div className="text-xs text-muted-foreground uppercase tracking-widest mb-3">// THE MULTIPLIER</div>
         <div className="font-bold text-lg text-foreground tracking-wide">
           10x <span className="text-muted-foreground">BEFORE AI</span> × 10x{" "}
-          <span className="text-muted-foreground">WITH AI</span> = <span className="text-terminal-green">100x</span>
+          <span className="text-muted-foreground">WITH AI</span> = <span className="text-signal-orange">100x</span>
         </div>
       </div>
 
@@ -128,16 +128,16 @@ export function CLIInterface({ onCommand }: CLIInterfaceProps) {
         <div className="border border-border p-4 mb-4 bg-void/50 max-h-32 overflow-y-auto">
           {commandHistory.map((cmd, i) => (
             <div key={i} className="text-xs text-muted-foreground mb-1">
-              <span className="text-terminal-green">$</span> {cmd}
+              <span className="text-signal-orange">$</span> {cmd}
             </div>
           ))}
         </div>
       )}
 
       {showPrompt ? (
-        <form onSubmit={handleSubmit} className="border border-terminal-green/50 bg-void">
+        <form onSubmit={handleSubmit} className="border border-signal-orange/50 bg-void">
           <div className="flex items-center px-4 py-4">
-            <span className="text-terminal-green mr-3 text-base">$</span>
+            <span className="text-signal-orange mr-3 text-base">$</span>
             <input
               type="text"
               value={inputValue}

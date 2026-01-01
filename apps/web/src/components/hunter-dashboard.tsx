@@ -77,14 +77,14 @@ export function HunterDashboard({ onClose }: HunterDashboardProps) {
               </button>
             )}
           </div>
-          <div className="text-terminal-green text-xs uppercase tracking-widest">SCANNING FOR 10x10 ARCHITECTS</div>
+          <div className="text-signal-orange text-xs uppercase tracking-widest">SCANNING FOR 10x10 ARCHITECTS</div>
         </header>
 
         <div className="border border-border bg-card p-6 mb-6">
           <div className="text-xs uppercase tracking-widest text-muted-foreground mb-4">// REALTIME METRICS</div>
           <div className="grid grid-cols-4 gap-6">
             <div>
-              <div className="text-2xl font-bold text-terminal-green mb-1">1,337</div>
+              <div className="text-2xl font-bold text-signal-orange mb-1">1,337</div>
               <div className="text-xs text-muted-foreground uppercase tracking-widest">TOTAL CERTIFIED</div>
             </div>
             <div>
@@ -96,7 +96,7 @@ export function HunterDashboard({ onClose }: HunterDashboardProps) {
               <div className="text-xs text-muted-foreground uppercase tracking-widest">AVG TIME</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-terminal-green mb-1">95%</div>
+              <div className="text-2xl font-bold text-signal-orange mb-1">95%</div>
               <div className="text-xs text-muted-foreground uppercase tracking-widest">AVG GRIT SCORE</div>
             </div>
           </div>
@@ -117,21 +117,21 @@ export function HunterDashboard({ onClose }: HunterDashboardProps) {
             {mockCandidates.map((candidate) => (
               <div key={candidate.id} className="px-6 py-4 hover:bg-secondary/20 transition-colors">
                 <div className="grid grid-cols-6 gap-4 text-xs items-center">
-                  <div className="font-mono text-terminal-green">{candidate.id}</div>
+                  <div className="font-mono text-signal-orange">{candidate.id}</div>
                   <div className="text-foreground uppercase tracking-wider">{candidate.stack}</div>
                   <div className="text-foreground">{candidate.timeToResolve}</div>
                   <div className="flex items-center gap-2">
-                    <div className="text-terminal-green font-bold">{candidate.gritScore}%</div>
+                    <div className="text-signal-orange font-bold">{candidate.gritScore}%</div>
                     <div className="flex-1 bg-border h-1 rounded-full overflow-hidden">
                       <div
-                        className="bg-terminal-green h-full transition-all"
+                        className="bg-signal-orange h-full transition-all"
                         style={{ width: `${candidate.gritScore}%` }}
                       />
                     </div>
                   </div>
                   <div>
                     {candidate.verified ? (
-                      <span className="text-terminal-green uppercase tracking-widest">[VERIFIED]</span>
+                      <span className="text-signal-orange uppercase tracking-widest">[VERIFIED]</span>
                     ) : (
                       <span className="text-terminal-amber uppercase tracking-widest">[PENDING]</span>
                     )}

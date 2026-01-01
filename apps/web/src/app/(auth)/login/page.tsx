@@ -4,6 +4,7 @@ import { useState, useEffect, Suspense } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import Link from "next/link"
 import { createClient } from "@/lib/supabase/client"
+import { Logo } from "@/components/logo"
 
 function LoginForm() {
   const router = useRouter()
@@ -85,24 +86,17 @@ function LoginForm() {
 
   return (
     <div className="w-full max-w-md space-y-6">
-      {/* Terminal Header */}
-      <div className="space-y-2 text-center">
-        <pre className="text-green-500 text-xs leading-none">
-{`████████╗███████╗███╗   ██╗██╗  ██╗████████╗███████╗███╗   ██╗
-╚══██╔══╝██╔════╝████╗  ██║╚██╗██╔╝╚══██╔══╝██╔════╝████╗  ██║
-   ██║   █████╗  ██╔██╗ ██║ ╚███╔╝    ██║   █████╗  ██╔██╗ ██║
-   ██║   ██╔══╝  ██║╚██╗██║ ██╔██╗    ██║   ██╔══╝  ██║╚██╗██║
-   ██║   ███████╗██║ ╚████║██╔╝ ██╗   ██║   ███████╗██║ ╚████║
-   ╚═╝   ╚══════╝╚═╝  ╚═══╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═══╝`}
-        </pre>
-        <p className="text-neutral-500 text-xs uppercase tracking-widest">
-          {">"} INITIALIZE SESSION
+      {/* Header */}
+      <div className="space-y-4 text-center">
+        <Logo size="lg" linkToHome={true} />
+        <p className="text-neutral-500 text-sm">
+          Sign in to your account
         </p>
       </div>
 
       {/* Success Message */}
       {success && (
-        <div className="border border-green-500/30 bg-green-500/10 px-3 py-2 text-xs text-green-500">
+        <div className="border border-signal-orange/30 bg-signal-orange/10 px-3 py-2 text-xs text-signal-orange">
           <span className="mr-2">✓</span>{success}
         </div>
       )}
@@ -125,7 +119,7 @@ function LoginForm() {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full border border-neutral-800 bg-black px-3 py-2.5 text-sm text-white outline-none transition-colors focus:border-green-500 placeholder:text-neutral-600"
+            className="w-full border border-neutral-800 bg-black px-3 py-2.5 text-sm text-white outline-none transition-colors focus:border-signal-orange placeholder:text-neutral-600"
             placeholder="operator@tenxten.dev"
             autoComplete="email"
             autoFocus
@@ -140,7 +134,7 @@ function LoginForm() {
             </label>
             <Link 
               href="/forgot-password" 
-              className="text-neutral-600 text-xs hover:text-green-500 transition-colors"
+              className="text-neutral-600 text-xs hover:text-signal-orange transition-colors"
             >
               FORGOT?
             </Link>
@@ -151,7 +145,7 @@ function LoginForm() {
               type={showPassword ? "text" : "password"}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full border border-neutral-800 bg-black px-3 py-2.5 pr-12 text-sm text-white outline-none transition-colors focus:border-green-500 placeholder:text-neutral-600"
+              className="w-full border border-neutral-800 bg-black px-3 py-2.5 pr-12 text-sm text-white outline-none transition-colors focus:border-signal-orange placeholder:text-neutral-600"
               placeholder="••••••••"
               autoComplete="current-password"
               disabled={loading}
@@ -170,11 +164,11 @@ function LoginForm() {
         <button
           type="submit"
           disabled={loading || !!oauthLoading}
-          className="w-full border border-green-500 bg-green-500/10 py-2.5 text-sm font-bold uppercase tracking-wider text-green-500 transition-colors hover:bg-green-500/20 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          className="w-full border border-signal-orange bg-signal-orange/10 py-2.5 text-sm font-bold uppercase tracking-wider text-signal-orange transition-colors hover:bg-signal-orange/20 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
         >
           {loading ? (
             <>
-              <span className="inline-block size-3 border border-green-500 border-t-transparent animate-spin" />
+              <span className="inline-block size-3 border border-signal-orange border-t-transparent animate-spin" />
               AUTHENTICATING...
             </>
           ) : (
@@ -232,7 +226,7 @@ function LoginForm() {
       <div className="space-y-3 pt-2">
         <p className="text-center text-xs text-neutral-500">
           No credentials?{" "}
-          <Link href="/signup" className="text-green-500 hover:underline">
+          <Link href="/signup" className="text-signal-orange hover:underline">
             INITIALIZE NEW ACCOUNT
           </Link>
         </p>

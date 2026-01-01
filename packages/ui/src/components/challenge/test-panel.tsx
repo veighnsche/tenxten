@@ -63,7 +63,7 @@ function TestPanel({ testCases, output = "", className }: TestPanelProps) {
           {testCases.length > 0 && (
             <div className="border-border bg-muted/30 flex h-8 items-center justify-between border-t px-3 text-[10px] uppercase tracking-wider">
               <div className="flex items-center gap-4">
-                <span className="text-green-500">{passedCount} PASSED</span>
+                <span className="text-signal-orange">{passedCount} PASSED</span>
                 <span className="text-red-500">{failedCount} FAILED</span>
               </div>
               <span className="text-muted-foreground">
@@ -95,7 +95,7 @@ function TestCaseRow({ testCase }: TestCaseRowProps) {
   const statusConfig = {
     pending: { icon: "○", color: "text-muted-foreground" },
     running: { icon: "◐", color: "text-amber-500 animate-spin" },
-    passed: { icon: "✓", color: "text-green-500" },
+    passed: { icon: "✓", color: "text-signal-orange" },
     failed: { icon: "✗", color: "text-red-500" },
   }
 
@@ -147,7 +147,7 @@ function TestCaseRow({ testCase }: TestCaseRowProps) {
               <span className="text-muted-foreground text-[10px] uppercase">
                 Expected:
               </span>
-              <pre className="mt-1 overflow-x-auto border border-green-500/30 bg-green-500/5 p-2 text-xs text-green-500">
+              <pre className="mt-1 overflow-x-auto border border-signal-orange/30 bg-signal-orange/5 p-2 text-xs text-signal-orange">
                 {testCase.expected}
               </pre>
             </div>
@@ -193,7 +193,7 @@ function TestProgressBar({ passed, failed, total, className }: TestProgressBarPr
       className={cn("bg-muted flex h-1 w-full overflow-hidden", className)}
     >
       <div
-        className="bg-green-500 transition-all"
+        className="bg-signal-orange transition-all"
         style={{ width: `${passedPercent}%` }}
       />
       <div

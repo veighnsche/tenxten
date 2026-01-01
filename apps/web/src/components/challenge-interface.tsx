@@ -44,7 +44,7 @@ export function ChallengeInterface({ onComplete }: ChallengeInterfaceProps) {
             CANDIDATE MODE // CHALLENGE_SELECT
           </div>
           <h1 className="text-4xl font-bold tracking-tight text-foreground uppercase">PROVE YOUR MULTIPLIER</h1>
-          <div className="text-terminal-green text-xs uppercase tracking-widest mt-2">SELECT YOUR PROVING GROUND</div>
+          <div className="text-signal-orange text-xs uppercase tracking-widest mt-2">SELECT YOUR PROVING GROUND</div>
         </header>
 
         <div className="space-y-4">
@@ -52,7 +52,7 @@ export function ChallengeInterface({ onComplete }: ChallengeInterfaceProps) {
             <button
               key={challenge.id}
               onClick={() => setSelectedChallenge(challenge.id)}
-              className="w-full border border-border bg-card hover:border-terminal-green transition-colors text-left"
+              className="w-full border border-border bg-card hover:border-signal-orange transition-colors text-left"
             >
               <div className="p-6">
                 <div className="flex items-start justify-between mb-4">
@@ -69,7 +69,7 @@ export function ChallengeInterface({ onComplete }: ChallengeInterfaceProps) {
                           ? "text-terminal-red"
                           : challenge.difficulty === "HIGH"
                             ? "text-terminal-amber"
-                            : "text-terminal-green"
+                            : "text-signal-orange"
                       }`}
                     >
                       {challenge.difficulty}
@@ -81,7 +81,7 @@ export function ChallengeInterface({ onComplete }: ChallengeInterfaceProps) {
                 <p className="text-sm text-smoke leading-relaxed">{challenge.description}</p>
 
                 <div className="mt-4 pt-4 border-t border-border">
-                  <div className="text-xs text-terminal-green uppercase tracking-widest">[CLICK_TO_INITIALIZE]</div>
+                  <div className="text-xs text-signal-orange uppercase tracking-widest">[CLICK_TO_INITIALIZE]</div>
                 </div>
               </div>
             </button>

@@ -12,8 +12,8 @@ function getPasswordStrength(password: string): { score: number; label: string; 
   if (score <= 1) return { score, label: "WEAK", color: "bg-red-500" }
   if (score <= 2) return { score, label: "FAIR", color: "bg-amber-500" }
   if (score <= 3) return { score, label: "GOOD", color: "bg-yellow-500" }
-  if (score <= 4) return { score, label: "STRONG", color: "bg-green-500" }
-  return { score, label: "EXCELLENT", color: "bg-green-400" }
+  if (score <= 4) return { score, label: "STRONG", color: "bg-signal-orange" }
+  return { score, label: "EXCELLENT", color: "bg-signal-orange/80" }
 }
 
 function validateCallsign(callsign: string): { valid: boolean; error?: string } {

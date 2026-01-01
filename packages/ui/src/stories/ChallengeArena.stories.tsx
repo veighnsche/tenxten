@@ -313,7 +313,7 @@ export const Completed: StoryObj = {
           </ChallengeHeaderGroup>
           <ChallengeHeaderGroup>
             <div className="text-muted-foreground text-xs">
-              Completed in <span className="text-green-500 font-bold">32:47</span>
+              Completed in <span className="text-signal-orange font-bold">32:47</span>
             </div>
           </ChallengeHeaderGroup>
         </ChallengeHeader>
