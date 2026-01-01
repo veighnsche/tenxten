@@ -1,52 +1,93 @@
-import Image from "next/image";
+"use client"
+
+import { useState } from "react"
+import { StatusBar } from "@/components/status-bar"
+import { CLIInterface } from "@/components/cli-interface"
+import { HunterDashboard } from "@/components/hunter-dashboard"
+import { AuthModal } from "@/components/auth-modal"
+import { ChallengeInterface } from "@/components/challenge-interface"
+
+type AppMode = "landing" | "challenge" | "hunter"
+type AuthState = "unauthenticated" | "candidate" | "hunter"
 
 export default function Home() {
-	return (
-		<div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-			<main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-				<Image className="dark:invert" src="/next.svg" alt="Next.js logo" width={180} height={38} priority />
-				<ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-					<li className="mb-2 tracking-[-.01em]">
-						Get started by editing{" "}
-						<code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-							src/app/page.tsx
-						</code>
-						.
-					</li>
-					<li className="tracking-[-.01em]">Save and see your changes instantly.</li>
-				</ol>
+  const [mode, setMode] = useState<AppMode>("landing")
+  const [authState, setAuthState] = useState<AuthState>("unauthenticated")
+  const [showAuthModal, setShowAuthModal] = useState(false)
+  const [pendingMode, setPendingMode] = useState<"candidate" | "hunter" | null>(null)
 
-				<div className="flex gap-4 items-center flex-col sm:flex-row">
-					<a
-						className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-						href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						Read our docs
-					</a>
-				</div>
-			</main>
-			<footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-				<a
-					className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-					href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<Image aria-hidden src="/file.svg" alt="File icon" width={16} height={16} />
-					Learn
-				</a>
-				<a
-					className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-					href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<Image aria-hidden src="/globe.svg" alt="Globe icon" width={16} height={16} />
-					Go to nextjs.org →
-				</a>
-			</footer>
-		</div>
-	);
+  const handleCommand = (command: string) => {
+    console.log("[v0] Command received:", command)
+
+    if (command === "/hunter") {
+      setPendingMode("hunter")
+      setShowAuthModal(true)
+    } else if (command === "initialize" || command === "prove") {
+      setPendingMode("candidate")
+      setShowAuthModal(true)
+    }
+  }
+
+  const handleAuthSuccess = (userType: "candidate" | "hunter") => {
+    console.log("[v0] Auth successful for:", userType)
+    setAuthState(userType)
+    setShowAuthModal(false)
+
+    if (userType === "hunter") {
+      setMode("hunter")
+    } else {
+      setMode("challenge")
+    }
+    setPendingMode(null)
+  }
+
+  const handleAuthClose = () => {
+    setShowAuthModal(false)
+    setPendingMode(null)
+  }
+
+  const handleHunterClose = () => {
+    setMode("landing")
+  }
+
+  return (
+    <>
+      <StatusBar />
+      <div className="min-h-screen bg-void text-foreground flex flex-col pt-12">
+        {mode === "landing" && <CLIInterface onCommand={handleCommand} />}
+        {mode === "challenge" && <ChallengeInterface />}
+        {mode === "hunter" && <HunterDashboard onClose={handleHunterClose} />}
+
+        <footer className="px-6 py-4 border-t border-border mt-auto">
+          <div className="max-w-7xl mx-auto flex justify-between items-center text-xs uppercase tracking-widest text-muted-foreground">
+            <span>
+              MODE:{" "}
+              <span
+                className={
+                  mode === "hunter"
+                    ? "text-terminal-red"
+                    : mode === "challenge"
+                      ? "text-terminal-amber"
+                      : "text-terminal-green"
+                }
+              >
+                {mode.toUpperCase()}
+              </span>
+            </span>
+            <span>
+              AUTH:{" "}
+              <span className={authState !== "unauthenticated" ? "text-terminal-green" : "text-muted-foreground"}>
+                {authState.toUpperCase()}
+              </span>
+            </span>
+            <span>BUILD: 2026.01.01</span>
+          </div>
+        </footer>
+      </div>
+
+      {showAuthModal && pendingMode && (
+        <AuthModal mode={pendingMode} onClose={handleAuthClose} onSuccess={handleAuthSuccess} />
+      )}
+    </>
+  )
 }

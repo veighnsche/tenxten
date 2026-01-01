@@ -1,135 +1,155 @@
-# Turborepo starter
+# TENXTEN
 
-This Turborepo starter is maintained by the Turborepo core team.
+The Proving Ground for 10x10 Architects.
 
-## Using this example
+---
 
-Run the following command:
+## THE PROBLEM
+
+AI has democratized code generation. Anyone with a keyboard can now produce syntax. Cursor, Copilot, Claude—they write code for you. Congratulations. You and everyone else.
+
+But here's what the "prompt and pray" crowd doesn't understand: **generating code is not engineering.**
+
+Copying a snippet that compiles is not architecture. Watching an AI hallucinate a solution and then pasting it anyway is not debugging. Typing "fix this" into a chat window until something works is not problem-solving.
+
+It's gambling with extra steps.
+
+---
+
+## THE DEFINITION
+
+**10x10** is the multiplier effect:
+
+```
+10x BEFORE AI × 10x WITH AI = 100x
+```
+
+A 10x developer before AI understood systems, memory, state, failure modes, and the cost of bad abstractions. They spent years in the trenches.
+
+A 10x developer *with* AI uses that foundation to leverage these tools at a velocity that prompt kiddies cannot comprehend. They don't ask the AI to think for them—they use it to execute faster what they already know needs to be built.
+
+If you were a 1x developer before AI, you are now a 1x developer with a very expensive autocomplete.
+
+---
+
+## THE FILTER
+
+This repository exists to separate signal from noise.
+
+We are not interested in:
+- Developers who give up when the AI hallucinates
+- "Vibe coders" who ship broken abstractions
+- Anyone who thinks copy-pasting is a skill
+- The "it works on my machine" crowd who never learned why
+
+We are looking for:
+- Engineers who spend 15-16 hours in trial-and-error loops to make the impossible work
+- Architects who debug the AI's output instead of trusting it blindly
+- Builders who understand that **Grit** is the only currency that matters
+
+If you bounce from this page, you weren't meant to be here.
+
+---
+
+## INITIALIZATION
+
+If you cannot execute these commands, you do not belong here.
 
 ```sh
-npx create-turbo@latest
+git clone https://github.com/your-org/tenxten.git
+cd tenxten
+bun install
+bun run dev
 ```
 
-## What's inside?
+Requirements:
+- `node >= 18`
+- `bun >= 1.3` — **This is a bun-only monorepo. No npm. No pnpm. Bun.**
+- The ability to read error messages
 
-This Turborepo includes the following packages/apps:
+---
 
-### Apps and Packages
+## DEVELOPER ONBOARDING
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+### Package Manager: Bun
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+This monorepo uses **bun** exclusively. Do not use `npm` or `pnpm`.
 
-### Utilities
+```sh
+# Install dependencies (run from root)
+bun install
 
-This Turborepo has some additional tools already setup for you:
+# Add a dependency to a workspace
+bun add <package> --filter <workspace>
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build
-yarn dlx turbo build
-pnpm exec turbo build
+# Run any script
+bun run <script>
 ```
 
-You can build a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
+### Monorepo Commands
 
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build --filter=docs
+All commands are orchestrated via **Turborepo** from the root:
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build --filter=docs
-yarn exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
-```
+| Command | Description |
+|---------|-------------|
+| `bun run dev` | Start all apps in development mode |
+| `bun run build` | Build all packages and apps |
+| `bun run lint` | Lint all workspaces |
+| `bun run check-types` | TypeScript type checking |
+| `bun run format` | Format code with Prettier |
 
-### Develop
+### Workspace-Specific Commands
 
-To develop all apps and packages, run the following command:
+Run commands in specific workspaces using `--filter`:
 
-```
-cd my-turborepo
+```sh
+# Start the web app only
+bun run dev --filter web
 
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev
+# Start Storybook (UI package)
+bun run storybook --filter ui
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev
-yarn exec turbo dev
-pnpm exec turbo dev
-```
-
-You can develop a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
-
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev --filter=web
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev --filter=web
-yarn exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
+# Build Storybook
+bun run build-storybook --filter ui
 ```
 
-### Remote Caching
+Or navigate directly into the workspace:
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo login
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo login
-yarn exec turbo login
-pnpm exec turbo login
+```sh
+cd apps/web && bun run dev
+cd packages/ui && bun run storybook
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+---
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+## STRUCTURE
 
 ```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo link
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo link
-yarn exec turbo link
-pnpm exec turbo link
+tenxten/
+├── apps/
+│   └── web/                 # Next.js 15 Landing Page (Cloudflare deployment)
+├── packages/
+│   ├── ui/                  # Component Library + Storybook (Vite + Base UI)
+│   └── tailwind-config/     # Shared Design Tokens (Tailwind v4)
+├── turbo.json               # Turborepo task configuration
+├── package.json             # Root workspace config (bun workspaces)
+└── bun.lock                 # Bun lockfile (do not delete)
 ```
 
-## Useful Links
+### Workspaces
 
-Learn more about the power of Turborepo:
+- **`apps/web`** — Next.js 15 with Turbopack. Deploys to Cloudflare via OpenNext.
+- **`packages/ui`** — Vite-based component library. Storybook is the first-class citizen for component development.
+- **`packages/tailwind-config`** — Shared Tailwind v4 config with design tokens. Consumed by all workspaces.
 
-- [Tasks](https://turborepo.com/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.com/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.com/docs/reference/configuration)
-- [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
+---
+
+## PROVE YOUR MULTIPLIER
+
+This is not a tutorial. This is not a course. This is not a "learn to code" platform.
+
+This is a **Proof of Work** mechanism.
+
+Build something. Ship something. Break something and fix it.
+
+Or close this tab and go back to asking ChatGPT to write your resume.
