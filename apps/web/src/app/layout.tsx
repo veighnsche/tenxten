@@ -1,6 +1,7 @@
 import type React from "react";
 import type { Metadata } from "next";
 import { Geist_Mono, Crimson_Text } from "next/font/google";
+import { Providers } from "@/components/providers";
 import "./globals.css";
 
 const geistMono = Geist_Mono({
@@ -29,7 +30,9 @@ export default function RootLayout({
 			<head>
 				<link rel="icon" href="/favicon.svg" type="image/svg+xml"></link>
 			</head>
-			<body className="antialiased" suppressHydrationWarning>{children}</body>
+			<body className="antialiased" suppressHydrationWarning>
+				<Providers>{children}</Providers>
+			</body>
 		</html>
 	);
 }
